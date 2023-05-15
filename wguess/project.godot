@@ -8,11 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Client",
+"language": "GDScript",
+"path": "res://net/client.gd"
+}, {
+"base": "Node",
+"class": "Server",
+"language": "GDScript",
+"path": "res://net/server.gd"
+} ]
+_global_script_class_icons={
+"Client": "",
+"Server": ""
+}
+
 [application]
 
 config/name="Wguess"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Connection="*res://net/connection.gd"
+Format="*res://net/format.gd"
 
 [gui]
 

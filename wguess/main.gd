@@ -37,11 +37,14 @@ const valid_keys = [
 "arrival cutie blessing",
 "cutie bundle treasure"
 ]
+var key_to_id := {}
 
 onready var key_input : LineEdit = $"%key_input"
 onready var result : Label = $"%result"
 
 func _ready():
+	for i in range(len(valid_keys)):
+		key_to_id[valid_keys[i]] = i
 	key_input.connect("text_entered", self, "_on_key_entered")
 	pass
 
