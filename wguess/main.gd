@@ -46,7 +46,8 @@ func _ready():
 	for i in range(len(valid_keys)):
 		key_to_id[valid_keys[i]] = i
 	key_input.connect("text_entered", self, "_on_key_entered")
-	Connection.client.connect("connection_status", self, "set_connection_status")
+	if Connection.client != null:
+		Connection.client.connect("connection_status", self, "set_connection_status")
 	pass
 
 func _on_key_entered(key:String):

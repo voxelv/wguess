@@ -7,4 +7,7 @@ func _ready():
 	if "SERVER" in OS.get_cmdline_args():
 		print("Server starting...")
 		server = Server.new()
+	else:
+		client = Client.new()
+		print("Client starting...")
 

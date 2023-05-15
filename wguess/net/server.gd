@@ -14,6 +14,8 @@ func _ready():
 	var err = socket.listen(port)
 	if err != OK:
 		print("Server could not listen on port %d ..." % port)
+	else:
+		print("Server listening on port %d" % port)
 
 func client_closed(id, code, reason):
 	var s := "Client %d disconnecting with code: %d, reason: %s" % [id, code, reason]
@@ -27,12 +29,12 @@ func client_disconnected(id, was_clean = false):
 
 func data(id):
 	var data := socket.get_peer(id).get_var() as Dictionary
-	handle(data)
+	handle(id, data)
 
 func remove_client(id):
 	clients.erase(id)
 
-func handle(data:Dictionary):
+func handle(id, data:Dictionary):
 	print(str(data))
 
 func broadcast(data:Dictionary):
