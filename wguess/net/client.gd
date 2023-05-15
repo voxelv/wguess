@@ -1,5 +1,6 @@
 extends Node
 class_name Client
+signal connection_status
 
 var socket := WebSocketClient.new()
 var peer_id := -1
@@ -10,7 +11,9 @@ func _ready():
 	socket.connect("connection_established", self, "connected")
 	socket.connect("data_received", self, "data")
 	
-	socket.connect_to_url("%s:%d" % ["73.96.232.30", 9080])
+	var err = socket.connect_to_url("%s:%d" % ["73.96.232.30", 9080])
+	if err == OK:
+		emit_signal("connection_status", OK)
 
 func closed(was_clean:bool=false):
 	print("Connection Closed (%d), clean: %s" % [peer_id, was_clean])

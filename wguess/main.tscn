@@ -46,3 +46,10 @@ margin_top = 70.0
 margin_right = 300.0
 margin_bottom = 84.0
 align = 1
+
+[node name="connection_status" type="ColorRect" parent="ui"]
+unique_name_in_owner = true
+margin_right = 3.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 3, 3 )
+color = Color( 1, 0, 0, 1 )
