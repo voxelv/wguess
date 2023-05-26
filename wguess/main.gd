@@ -41,14 +41,15 @@ var key_to_id := {}
 
 onready var key_input : LineEdit = $"%key_input"
 onready var result : Label = $"%result"
+onready var send_hello_btn : Button = $"%send_hello_btn"
 
 func _ready():
 	for i in range(len(valid_keys)):
 		key_to_id[valid_keys[i]] = i
 	key_input.connect("text_entered", self, "_on_key_entered")
+	send_hello_btn.connect("pressed", self, "_on_send_hello_btn_pressed")
 	if Connection.client != null:
 		Connection.client.connect("connection_status", self, "set_connection_status")
-	pass
 
 func _on_key_entered(key:String):
 	if key in valid_keys:
@@ -62,3 +63,6 @@ func set_connection_status(status):
 	else:
 		$"%connection_status".color = Color.red
 
+func _on_send_hello_btn_pressed():
+	if Connection.client != null:
+		Connection.client.send_print_string("HELLO")
